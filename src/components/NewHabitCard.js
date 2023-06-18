@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Modal from "react-modal";
 import dayjs from "dayjs";
 import { HabitContext } from "../contexts/HabitContext";
+import "../components/components.css";
 
 function NewHabitCard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,15 +61,16 @@ function NewHabitCard() {
     <div>
       <button onClick={openModal}>+ Add A New Habit</button>
       <Modal isOpen={isOpen} style={customStyles}>
-        <div>
+        <div className="habit-component">
           <input
             type="text"
             placeholder="Enter Habit Name"
             onChange={(event) => {
               setNewHabit({ ...newHabit, name: event.target.value });
             }}
+            style={{ paddingTop: "0.1rem" }}
           />
-          <div>
+          <div className="dropdown-main-div dropdown-main-div-1">
             <div className="dropdown-div">
               <label htmlFor="repeat">REPEAT</label>
               <select
@@ -103,7 +105,7 @@ function NewHabitCard() {
               </select>
             </div>
           </div>
-          <div>
+          <div className="dropdown-main-div dropdown-main-div-2">
             <div className="dropdown-div" defaultValue={newHabit.time}>
               <label htmlFor="time_of_day">TIME OF DAY</label>
               <select
@@ -136,8 +138,7 @@ function NewHabitCard() {
               ></input>
             </div>
           </div>
-
-          <div>
+          <div className="save-cancel-div">
             <button
               onClick={() => {
                 saveHandler();

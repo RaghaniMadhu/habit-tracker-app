@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Modal from "react-modal";
 import { HabitContext } from "../contexts/HabitContext";
+import "../components/components.css";
 
 function HabitCard({
   habitData: { id, name, repeat, goal, time, start_date },
@@ -49,9 +50,9 @@ function HabitCard({
     <div>
       <h3 onClick={openModal}>{name}</h3>
       <Modal isOpen={isOpen} style={customStyles}>
-        <div>
+        <div className="habit-component">
           <h2>{modifiedHabit.name}</h2>
-          <div>
+          <div className="dropdown-main-div dropdown-main-div-1">
             <div className="dropdown-div">
               <label htmlFor="repeat">REPEAT</label>
               <select
@@ -86,8 +87,11 @@ function HabitCard({
               </select>
             </div>
           </div>
-          <div>
-            <div className="dropdown-div" defaultValue={modifiedHabit.time}>
+          <div className="dropdown-main-div dropdown-main-div-2">
+            <div
+              className="dropdown-div time_of_day-div"
+              defaultValue={modifiedHabit.time}
+            >
               <label htmlFor="time_of_day">TIME OF DAY</label>
               <select
                 id="time_of_day"
@@ -119,8 +123,7 @@ function HabitCard({
               ></input>
             </div>
           </div>
-
-          <div>
+          <div className="save-cancel-div">
             <button
               onClick={() => {
                 saveHandler();

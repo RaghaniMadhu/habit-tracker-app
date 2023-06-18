@@ -31,3 +31,41 @@
   align-items: center;
   gap: 2rem;
 }
+
+.habit-component {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.dropdown-main-div {
+  display: flex;
+  /* gap: 2rem; */
+}
+
+.dropdown-main-div-1 {
+  gap: 2.5rem;
+}
+
+.dropdown-main-div-2 {
+  gap: 1rem;
+}
+
+.dropdown-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.time_of_day-div select {
+  padding-top: 0.075rem;
+  padding-bottom: 0.075rem;
+}
+
+.save-cancel-div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
