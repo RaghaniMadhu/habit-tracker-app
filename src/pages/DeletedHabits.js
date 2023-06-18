@@ -3,7 +3,7 @@ import HabitCard from "../components/HabitCard";
 import { HabitContext } from "../contexts/HabitContext";
 
 function DeletedHabits() {
-  const { habits } = useContext(HabitContext);
+  const { habits, setDefaultStateOfHabit } = useContext(HabitContext);
 
   const defaultHabits = habits.filter(({ state }) => state === "deleted");
 
@@ -11,7 +11,16 @@ function DeletedHabits() {
     <div>
       <div>
         {defaultHabits.map((eachHabit) => (
-          <HabitCard key={eachHabit.id} habitData={eachHabit} />
+          <div className="home-page-div" key={eachHabit.id}>
+            <HabitCard key={eachHabit.id} habitData={eachHabit} />
+            <button
+              onClick={() => {
+                setDefaultStateOfHabit(eachHabit.id);
+              }}
+            >
+              Restore
+            </button>
+          </div>
         ))}
       </div>
     </div>

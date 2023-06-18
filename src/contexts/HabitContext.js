@@ -39,9 +39,24 @@ function HabitContextProvider({ children }) {
     ]);
   };
 
+  const setDefaultStateOfHabit = (id) => {
+    setHabits(
+      habits.map((eachHabit) =>
+        eachHabit.id === id ? { ...eachHabit, state: "default" } : eachHabit
+      )
+    );
+  };
+
   return (
     <HabitContext.Provider
-      value={{ habits, editAHabit, deleteAHabit, archiveAHabit, addAHabit }}
+      value={{
+        habits,
+        editAHabit,
+        deleteAHabit,
+        archiveAHabit,
+        addAHabit,
+        setDefaultStateOfHabit,
+      }}
     >
       {children}
     </HabitContext.Provider>

@@ -1,5 +1,3 @@
-// import dayjs from "dayjs";
-
 export const habits_data = [
   {
     id: 1,
@@ -38,5 +36,3 @@ export const habits_data = [
     state: "archived",
   },
 ];
-
-// export const formatDate = () => dayjs().format("YYYY-MM-DD");
