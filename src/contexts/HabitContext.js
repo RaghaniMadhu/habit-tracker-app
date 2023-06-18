@@ -32,9 +32,16 @@ function HabitContextProvider({ children }) {
     );
   };
 
+  const addAHabit = (newHabit) => {
+    setHabits([
+      ...habits,
+      { id: habits.length + 1, ...newHabit, state: "default" },
+    ]);
+  };
+
   return (
     <HabitContext.Provider
-      value={{ habits, editAHabit, deleteAHabit, archiveAHabit }}
+      value={{ habits, editAHabit, deleteAHabit, archiveAHabit, addAHabit }}
     >
       {children}
     </HabitContext.Provider>

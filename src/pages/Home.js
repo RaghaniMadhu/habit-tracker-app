@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import HabitCard from "../components/HabitCard";
 import { HabitContext } from "../contexts/HabitContext";
+import NewHabitCard from "../components/NewHabitCard.js";
 
 function Home() {
   const { habits, deleteAHabit, archiveAHabit } = useContext(HabitContext);
@@ -9,6 +10,9 @@ function Home() {
 
   return (
     <div>
+      <div>
+        <NewHabitCard />
+      </div>
       <div>
         {defaultHabits.map((eachHabit) => (
           <div className="home-page-div" key={eachHabit.id}>

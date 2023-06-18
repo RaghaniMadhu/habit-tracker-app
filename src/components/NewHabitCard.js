@@ -1,30 +1,41 @@
 import React, { useContext, useState } from "react";
 import Modal from "react-modal";
+import dayjs from "dayjs";
 import { HabitContext } from "../contexts/HabitContext";
 
-function HabitCard({
-  habitData: { id, name, repeat, goal, time, start_date },
-}) {
+function NewHabitCard() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [modifiedHabit, setModifiedHabit] = useState({
-    id,
-    name,
-    repeat,
-    goal,
-    time,
-    start_date,
+  const [newHabit, setNewHabit] = useState({
+    name: "",
+    repeat: "Daily",
+    goal: "",
+    time: "",
+    start_date: dayjs().format("YYYY-MM-DD"),
   });
 
-  const { editAHabit } = useContext(HabitContext);
+  const { addAHabit } = useContext(HabitContext);
 
   const saveHandler = () => {
-    editAHabit({ ...modifiedHabit });
+    addAHabit(newHabit);
     setIsOpen(false);
+    setNewHabit({
+      name: "",
+      repeat: "Daily",
+      goal: "",
+      time: "",
+      start_date: dayjs().format("YYYY-MM-DD"),
+    });
   };
 
   const cancelHandler = () => {
-    setModifiedHabit({ id, name, repeat, goal, time, start_date });
+    setNewHabit({
+      name: "",
+      repeat: "Daily",
+      goal: "",
+      time: "",
+      start_date: dayjs().format("YYYY-MM-DD"),
+    });
     setIsOpen(false);
   };
 
@@ -47,19 +58,25 @@ function HabitCard({
 
   return (
     <div>
-      <h3 onClick={openModal}>{name}</h3>
+      <button onClick={openModal}>+ Add A New Habit</button>
       <Modal isOpen={isOpen} style={customStyles}>
         <div>
-          <h2>{modifiedHabit.name}</h2>
+          <input
+            type="text"
+            placeholder="Enter Habit Name"
+            onChange={(event) => {
+              setNewHabit({ ...newHabit, name: event.target.value });
+            }}
+          />
           <div>
             <div className="dropdown-div">
               <label htmlFor="repeat">REPEAT</label>
               <select
                 id="repeat"
-                defaultValue={modifiedHabit.repeat}
+                defaultValue={newHabit.repeat}
                 onChange={(event) => {
-                  setModifiedHabit({
-                    ...modifiedHabit,
+                  setNewHabit({
+                    ...newHabit,
                     repeat: event.target.value,
                   });
                 }}
@@ -69,31 +86,31 @@ function HabitCard({
                 <option value="Monthly">Monthly</option>
               </select>
             </div>
-            <div className="dropdown-div" defaultValue={modifiedHabit.goal}>
+            <div className="dropdown-div" defaultValue={newHabit.goal}>
               <label htmlFor="goal">GOAL</label>
               <select
                 id="goal"
                 onChange={(event) => {
-                  setModifiedHabit({
-                    ...modifiedHabit,
+                  setNewHabit({
+                    ...newHabit,
                     goal: event.target.value,
                   });
                 }}
               >
-                <option value="1 time">1 time {modifiedHabit.repeat}</option>
-                <option value="2 times">2 times {modifiedHabit.repeat}</option>
-                <option value="3 times">3 times {modifiedHabit.repeat}</option>
+                <option value="1 time">1 time {newHabit.repeat}</option>
+                <option value="2 times">2 times {newHabit.repeat}</option>
+                <option value="3 times">3 times {newHabit.repeat}</option>
               </select>
             </div>
           </div>
           <div>
-            <div className="dropdown-div" defaultValue={modifiedHabit.time}>
+            <div className="dropdown-div" defaultValue={newHabit.time}>
               <label htmlFor="time_of_day">TIME OF DAY</label>
               <select
                 id="time_of_day"
                 onChange={(event) => {
-                  setModifiedHabit({
-                    ...modifiedHabit,
+                  setNewHabit({
+                    ...newHabit,
                     time: event.target.value,
                   });
                 }}
@@ -109,10 +126,10 @@ function HabitCard({
               <input
                 type="date"
                 id="start-date"
-                value={modifiedHabit.start_date}
+                value={newHabit.start_date}
                 onChange={(event) => {
-                  setModifiedHabit({
-                    ...modifiedHabit,
+                  setNewHabit({
+                    ...newHabit,
                     start_date: event.target.value,
                   });
                 }}
@@ -142,4 +159,4 @@ function HabitCard({
   );
 }
 
-export default HabitCard;
+export default NewHabitCard;
