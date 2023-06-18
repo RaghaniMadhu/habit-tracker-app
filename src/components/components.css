@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paths {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  gap: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.paths .link {
+  font-size: large;
+}
+
+.app-name {
+  font-family: "Calligraffitti", cursive;
+  font-size: larger;
+  padding: 0.2rem 0.5rem;
+}
+
+.home-page-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
