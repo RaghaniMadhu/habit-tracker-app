@@ -69,3 +69,15 @@
   gap: 1rem;
   margin-top: 0.5rem;
 }
+
+.save-cancel-div button {
+  cursor: pointer;
+}
+
+.home-page-div button {
+  cursor: pointer;
+}
+
+h3 {
+  cursor: pointer;
+}
