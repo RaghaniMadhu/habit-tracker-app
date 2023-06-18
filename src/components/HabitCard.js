@@ -88,10 +88,7 @@ function HabitCard({
             </div>
           </div>
           <div className="dropdown-main-div dropdown-main-div-2">
-            <div
-              className="dropdown-div time_of_day-div"
-              defaultValue={modifiedHabit.time}
-            >
+            <div className="dropdown-div time_of_day-div">
               <label htmlFor="time_of_day">TIME OF DAY</label>
               <select
                 id="time_of_day"
@@ -101,6 +98,7 @@ function HabitCard({
                     time: event.target.value,
                   });
                 }}
+                defaultValue={modifiedHabit.time}
               >
                 <option value="Morning">Morning</option>
                 <option value="Afternoon">Afternoon</option>
